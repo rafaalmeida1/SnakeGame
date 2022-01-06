@@ -27,7 +27,7 @@ img{
     background-color: white;
     position: absolute;
     left: 100px;
-    top: 600px;
+    top: 610px;
 }
 
 img:hover{
@@ -43,6 +43,16 @@ a{
 h1{
     color: rgb(21, 201, 21);
     animation : blink 2s infinite;
+}
+
+p{
+    font-size: 30px;
+    display: block;
+    color: rgb(221, 61, 61);
+}
+
+span {
+    color: rgb(21, 201, 21)
 }
 
 #btn-reset {
@@ -66,5 +76,5 @@ h1{
 #stage {
     border: 5px solid rgb(21, 201, 21);
     border-radius: 10px;
-    box-shadow: 0 0 50px rgb(21, 201, 21);
+    box-shadow: 0 0 10px rgb(21, 201, 21);
 }

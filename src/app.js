@@ -1,6 +1,11 @@
 let stage = document.getElementById('stage');
 let btn = document.getElementById('btn-reset').addEventListener('click', resetGame);
 let ctx = stage.getContext('2d');
+let score = document.getElementById('score');
+let scoreAt = document.getElementById('scoreAtual');
+
+let points = [];
+
 document.addEventListener("keydown", keyPush)
 
 setInterval(game, 100);
@@ -41,6 +46,7 @@ function game(){
 
     ctx.fillStyle = 'red'
     ctx.fillRect(ax*tp, ay*tp, tp, tp);
+    
 
     ctx.fillStyle = 'rgb(21, 201, 21)';
     for(var i = 0; i < trail.length; i++){
@@ -48,6 +54,8 @@ function game(){
         if(trail[i].x == px && trail[i].y == py){
             vx = vy = 0;
             tail = 5;
+            score.innerHTML = scoreAt.innerHTML;
+            setInterval ((points = []), 1000);
         }
     }
 
@@ -60,6 +68,8 @@ function game(){
         tail++;
         ax = Math.floor(Math.random()*qp);
         ay = Math.floor(Math.random()*qp);
+        points.push(1)
+        scoreAt.innerHTML = points.reduce((a, b) => a + b, 0);
     }
     ctx.start()
     
@@ -104,6 +114,10 @@ function keyPush(event){
             vy = vel;
             break;
     }
+
+    if(event.keyCode == 32){
+        resetGame();
+    }
 }
 
 
@@ -114,6 +128,7 @@ function resetGame(){
     tail = 5;
     trail = [];
     ax = ay = 15;
+    score.innerHTML = 0;
 }
 
     
