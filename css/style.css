@@ -1,0 +1,70 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    text-align: center;
+    background-color: black;
+}
+
+@keyframes blink {
+    0% {
+        color: rgb(21, 201, 21);
+    }
+    50% {
+        color: rgb(13, 58, 13);
+    }
+    100% {
+        color: rgb(21, 201, 21);
+    }
+}
+
+.container {
+    width: 800px;
+    height: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+img{
+    background-color: white;
+    position: absolute;
+    left: 100px;
+    top: 600px;
+}
+
+img:hover{
+    width: 35px;
+    height: 35px;
+    background-color: rgb(21, 201, 21);
+}
+
+a{
+    text-decoration: none;
+}
+
+h1{
+    color: rgb(21, 201, 21);
+    animation : blink 2s infinite;
+}
+
+#btn-reset {
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+    background-color: black;
+    color: rgb(21, 201, 21);
+    font-size: 20px;
+    padding: 10px;
+    border: 1px solid rgb(21, 201, 21);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#btn-reset:hover {
+    background-color: rgb(7, 214, 7);
+    color: white;
+}
+
+#stage {
+    border: 5px solid rgb(21, 201, 21);
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgb(21, 201, 21);
+}
