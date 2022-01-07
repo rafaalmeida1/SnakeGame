@@ -43,7 +43,7 @@ img:hover{
     align-items: center;
     grid-gap: 10px;
     position: relative;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 #btn-up {
