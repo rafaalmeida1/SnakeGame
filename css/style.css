@@ -36,6 +36,75 @@ img:hover{
     background-color: rgb(21, 201, 21);
 }
 
+.btns {
+    display:grid;
+    grid-template-areas: auto auto /auto auto auto;
+    justify-items: center;
+    align-items: center;
+    grid-gap: 10px;
+    position: relative;
+    /* overflow: hidden; */
+}
+
+#btn-up {
+    background-image: url(../assets/up.png);
+    background-size: cover;
+    background-repeat: no-repeat;  
+    align-self: center;
+    justify-self: center;
+    display: inline;
+    position: absolute;
+    top: 5px;
+}
+
+#btn-down {
+    background-image: url(../assets/down.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-self: center;
+    justify-self: center;
+    display: inline;
+    position: absolute;
+    top: 230px;
+}
+
+#btn-left {
+    background-image: url(../assets/left.png);
+    background-size: cover;
+    background-repeat: no-repeat;  
+    align-self: center;
+    justify-self: center;
+    display: inline;
+    position: absolute;
+    top: 120px;
+    left: 200px;
+}
+
+#btn-right {
+    /* margin-left: 100px; */
+    background-image: url(../assets/right.png);
+    background-size: cover;
+    background-repeat: no-repeat;  
+    align-self: center;
+    justify-self: center;
+    display: inline;
+    position: absolute;
+    top: 120px;
+    right: 200px;
+}
+
+#btn-up, #btn-down, #btn-left, #btn-right {
+    width: 150px;
+    height: 150px; 
+    background-color: rgb(21, 201, 21);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+#btn-up:hover, #btn-down:hover, #btn-left:hover, #btn-right:hover{
+    background-color: rgb(13, 58, 13);
+}
+
 a{
     text-decoration: none;
 }
@@ -53,6 +122,10 @@ p{
 
 span {
     color: rgb(21, 201, 21)
+}
+
+#scoreAtual {
+    margin-right: 20px;
 }
 
 #btn-reset {
@@ -77,4 +150,25 @@ span {
     border: 5px solid rgb(21, 201, 21);
     border-radius: 10px;
     box-shadow: 0 0 10px rgb(21, 201, 21);
+}
+
+@media screen and (max-width: 600px){
+
+    #btn-reset{
+        width: 200px;
+        height: 50px;
+        font-size: 35px;
+        text-align: center;
+        line-height: 15px;
+    }
+
+    .btns{
+        overflow: visible;
+        top: 100px;
+    }
+
+    p{
+        display: inline;
+    }
+    
 }

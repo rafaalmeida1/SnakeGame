@@ -7,8 +7,26 @@ let scoreAt = document.getElementById('scoreAtual');
 let points = [];
 
 document.addEventListener("keydown", keyPush)
+let btnUp = 
+document.getElementById('btn-up').addEventListener('click', () => {
+    vx = 0;
+    vy = -vel;
+});
+let btnDown = document.getElementById('btn-down').addEventListener('click', () => {
+    vx = 0;
+    vy = vel;
+});
+let btnLeft = document.getElementById('btn-left').addEventListener('click', () => {
+    vx = -vel;
+    vy = 0;
+});
+let btnRight = document.getElementById('btn-right').addEventListener('click', () => {
+    vx = vel;
+    vy = 0;
+});
 
-setInterval(game, 100);
+
+setInterval(game, 60);
 
 
 const vel = 1;
