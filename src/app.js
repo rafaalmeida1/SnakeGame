@@ -4,27 +4,10 @@ let ctx = stage.getContext('2d');
 let score = document.getElementById('score');
 let scoreAt = document.getElementById('scoreAtual');
 
+const getBanco = () => JSON.parse(localStorage.getItem('$points'));
+const setBanco = (points) => localStorage.setItem('$points', JSON.stringify(points));
+
 let points = [];
-
-document.addEventListener("keydown", keyPush)
-let btnUp = 
-document.getElementById('btn-up').addEventListener('click', () => {
-    vx = 0;
-    vy = -vel;
-});
-let btnDown = document.getElementById('btn-down').addEventListener('click', () => {
-    vx = 0;
-    vy = vel;
-});
-let btnLeft = document.getElementById('btn-left').addEventListener('click', () => {
-    vx = -vel;
-    vy = 0;
-});
-let btnRight = document.getElementById('btn-right').addEventListener('click', () => {
-    vx = vel;
-    vy = 0;
-});
-
 
 setInterval(game, 60);
 
@@ -44,20 +27,10 @@ function game(){
 
     px += vx;
     py += vy;
-    if(px < 0){
-        px = qp-1;
-    }
-    if(px > qp-1){
-        px = 0;
-    }
-    if(py < 0){
-        py = qp-1;
-    }
-    if(py > qp-1){
-        py = 0;
-    } //mudar talvez
 
-
+    if(px < 0 || px > qp-1 || py < 0 || py > qp-1){
+        resetGame();
+    }
 
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, stage.width, stage.height);
@@ -72,8 +45,13 @@ function game(){
         if(trail[i].x == px && trail[i].y == py){
             vx = vy = 0;
             tail = 5;
-            score.innerHTML = scoreAt.innerHTML;
-            setInterval ((points = []), 1000);
+            if(scoreAt.innerHTML > score.innerHTML){
+                score.innerHTML = scoreAt.innerHTML;
+                points.push(scoreAt.innerHTML);
+                setBanco(points);
+            }
+            scoreAt.innerHTML = 0;
+
         }
     }
 
@@ -83,11 +61,14 @@ function game(){
     }
 
     if(ax == px && ay == py){
+        const banco = getBanco();
         tail++;
         ax = Math.floor(Math.random()*qp);
         ay = Math.floor(Math.random()*qp);
-        points.push(1)
+        scoreAt.innerHTML = parseInt(scoreAt.innerHTML) + 1;
+        points = banco.push(scoreAt);
         scoreAt.innerHTML = points.reduce((a, b) => a + b, 0);
+        setBanco(banco)
     }
     ctx.start()
     
@@ -138,6 +119,24 @@ function keyPush(event){
     }
 }
 
+document.addEventListener("keydown", keyPush)
+let btnUp = 
+document.getElementById('btn-up').addEventListener('click', () => {
+    vx = 0;
+    vy = -vel;
+});
+let btnDown = document.getElementById('btn-down').addEventListener('click', () => {
+    vx = 0;
+    vy = vel;
+});
+let btnLeft = document.getElementById('btn-left').addEventListener('click', () => {
+    vx = -vel;
+    vy = 0;
+});
+let btnRight = document.getElementById('btn-right').addEventListener('click', () => {
+    vx = vel;
+    vy = 0;
+});
 
 function resetGame(){
     px = 10;
@@ -146,7 +145,9 @@ function resetGame(){
     tail = 5;
     trail = [];
     ax = ay = 15;
-    score.innerHTML = 0;
+    setTimeout(() => {
+    scoreAt.innerHTML = 0;
+    }, 1000);
 }
 
     

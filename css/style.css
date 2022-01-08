@@ -116,7 +116,7 @@ h1{
 
 p{
     font-size: 30px;
-    display: block;
+    display: inline;
     color: rgb(221, 61, 61);
 }
 
@@ -165,10 +165,6 @@ span {
     .btns{
         overflow: visible;
         top: 100px;
-    }
-
-    p{
-        display: inline;
     }
     
 }
